@@ -1,21 +1,50 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Summit Haque</title>
   <meta name="description" content="Summit Haque — Ph.D. student in Computer Science at Oregon State University. Research in HCI, CS education, software engineering, and AI." />
   <style>
-    :root {
+    /* ── Dark theme (default) ── */
+    :root,
+    [data-theme="dark"] {
       --bg: #0f172a;
+      --bg-grad: radial-gradient(circle at top, #1e293b 0%, #0f172a 45%);
       --panel: #111827;
       --card: #1f2937;
+      --nav-bg-top: rgba(15,23,42,0.92);
+      --nav-bg-bot: rgba(15,23,42,0.55);
       --text: #e5e7eb;
       --muted: #cbd5e1;
       --accent: #38bdf8;
       --accent2: #a78bfa;
       --border: rgba(255,255,255,0.08);
-      --max: 1040px;
+      --card-bg: rgba(17,24,39,0.8);
+      --btn-grad: linear-gradient(135deg, rgba(56,189,248,0.18), rgba(167,139,250,0.16));
+      --tag-bg: rgba(255,255,255,0.04);
+      --shadow: 0 18px 45px rgba(0,0,0,0.22);
+      --toggle-icon: "☀️";
+    }
+
+    /* ── Light theme ── */
+    [data-theme="light"] {
+      --bg: #f1f5f9;
+      --bg-grad: radial-gradient(circle at top, #e2eaf5 0%, #f1f5f9 45%);
+      --panel: #ffffff;
+      --card: #ffffff;
+      --nav-bg-top: rgba(241,245,249,0.95);
+      --nav-bg-bot: rgba(241,245,249,0.75);
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #0284c7;
+      --accent2: #7c3aed;
+      --border: rgba(0,0,0,0.1);
+      --card-bg: rgba(255,255,255,0.9);
+      --btn-grad: linear-gradient(135deg, rgba(2,132,199,0.12), rgba(124,58,237,0.10));
+      --tag-bg: rgba(0,0,0,0.04);
+      --shadow: 0 18px 45px rgba(0,0,0,0.08);
+      --toggle-icon: "🌙";
     }
 
     * { box-sizing: border-box; }
@@ -23,25 +52,50 @@
     body {
       margin: 0;
       font-family: Inter, Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top, #1e293b 0%, var(--bg) 45%);
+      background: var(--bg-grad);
+      background-attachment: fixed;
       color: var(--text);
       line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
     }
 
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 24px; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 24px; }
+
+    /* ── Nav ── */
     .nav {
       display: flex; justify-content: space-between; align-items: center;
       gap: 16px; padding: 10px 0 22px;
       position: sticky; top: 0; backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(15,23,42,0.92), rgba(15,23,42,0.55));
+      background: linear-gradient(to bottom, var(--nav-bg-top), var(--nav-bg-bot));
       z-index: 10;
+      transition: background 0.3s;
     }
     .brand { font-weight: 700; letter-spacing: 0.2px; }
-    .navlinks { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.95rem; }
+    .navlinks { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.95rem; align-items: center; }
     .navlinks a { color: var(--muted); }
+
+    /* ── Theme toggle button ── */
+    .theme-toggle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--tag-bg);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover { transform: scale(1.12); }
+    /* icon swaps via CSS */
+    [data-theme="dark"]  .theme-toggle::after { content: "☀️"; }
+    [data-theme="light"] .theme-toggle::after { content: "🌙"; }
+
+    /* ── Hero ── */
     .hero {
       display: grid;
       grid-template-columns: 1.4fr 0.9fr;
@@ -59,14 +113,17 @@
     .tag {
       display: inline-flex; align-items: center;
       padding: 8px 12px; border: 1px solid var(--border);
-      border-radius: 999px; background: rgba(255,255,255,0.04);
+      border-radius: 999px; background: var(--tag-bg);
       color: var(--text); font-size: 0.92rem;
     }
+
+    /* ── Cards & sections ── */
     .hero-card, .section, .card {
-      background: rgba(17,24,39,0.8);
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 18px;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.22);
+      box-shadow: var(--shadow);
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
     }
     .hero-card { padding: 22px; }
     .hero-card h2 { margin-top: 0; }
@@ -79,9 +136,10 @@
       display: inline-flex; align-items: center; gap: 8px;
       padding: 11px 16px; border-radius: 12px;
       border: 1px solid var(--border);
-      background: linear-gradient(135deg, rgba(56,189,248,0.18), rgba(167,139,250,0.16));
+      background: var(--btn-grad);
       color: var(--text);
       font-weight: 600;
+      transition: background 0.3s, border-color 0.3s;
     }
 
     .section { padding: 22px; margin: 18px 0; }
@@ -95,6 +153,7 @@
 
     .pub li, .proj li, .svc li, .ach li { margin: 10px 0; }
     .small { color: var(--muted); font-size: 0.96rem; }
+
     footer {
       padding: 28px 0 40px;
       color: var(--muted);
@@ -120,6 +179,7 @@
         <a href="#publications">Publications</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle light/dark mode"></button>
       </nav>
     </header>
 
@@ -243,10 +303,10 @@
       <section id="publications" class="section">
         <h2>Publications</h2>
         <ul class="clean pub">
-          <li>S. Haque and C. Hundhausen, “Generative AI Access, Usage, and Perceptions: An Empirical Comparison of Computing Students In The United States and Bangladesh,” ICER 2025.</li>
-          <li>M. I. H. Shihab, C. Hundhausen, A. Tariq, S. Haque, Y. Qiao, B. W. Mulanda, “The Effects of GitHub Copilot on Computing Students’ Programming Effectiveness, Efficiency, and Processes in Brownfield Coding Tasks,” ICER 2025.</li>
-          <li>M. Z. Haque et al., “B-NER: A Novel Bangla Named Entity Recognition Dataset with Largest Entities and Its Baseline Evaluation,” IEEE Access, 2023.</li>
-          <li>N. Humaira, H. Afia, and S. Haque, “A Study on Machine Learning and Deep Learning Methods Using Feature Extraction for Bengali News Document Classification,” ASIANCON, 2021.</li>
+          <li>S. Haque and C. Hundhausen, "Generative AI Access, Usage, and Perceptions: An Empirical Comparison of Computing Students In The United States and Bangladesh," ICER 2025.</li>
+          <li>M. I. H. Shihab, C. Hundhausen, A. Tariq, S. Haque, Y. Qiao, B. W. Mulanda, "The Effects of GitHub Copilot on Computing Students' Programming Effectiveness, Efficiency, and Processes in Brownfield Coding Tasks," ICER 2025.</li>
+          <li>M. Z. Haque et al., "B-NER: A Novel Bangla Named Entity Recognition Dataset with Largest Entities and Its Baseline Evaluation," IEEE Access, 2023.</li>
+          <li>N. Humaira, H. Afia, and S. Haque, "A Study on Machine Learning and Deep Learning Methods Using Feature Extraction for Bengali News Document Classification," ASIANCON, 2021.</li>
         </ul>
       </section>
 
@@ -324,6 +384,20 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const html = document.documentElement;
+    const btn  = document.getElementById('themeToggle');
+
+    // Load saved preference, or fall back to OS preference
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    html.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+
+    btn.addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
   </script>
 </body>
 </html>
