@@ -1,169 +1,266 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Summit Haque</title>
   <meta name="description" content="Summit Haque — Ph.D. student in Computer Science at Oregon State University. Research in HCI, CS education, software engineering, and AI." />
   <style>
-    /* ── Dark theme (default) ── */
-    :root,
-    [data-theme="dark"] {
-      --bg: #0f172a;
-      --bg-grad: radial-gradient(circle at top, #1e293b 0%, #0f172a 45%);
-      --panel: #111827;
-      --card: #1f2937;
-      --nav-bg-top: rgba(15,23,42,0.92);
-      --nav-bg-bot: rgba(15,23,42,0.55);
-      --text: #e5e7eb;
-      --muted: #cbd5e1;
-      --accent: #38bdf8;
-      --accent2: #a78bfa;
-      --border: rgba(255,255,255,0.08);
-      --card-bg: rgba(17,24,39,0.8);
-      --btn-grad: linear-gradient(135deg, rgba(56,189,248,0.18), rgba(167,139,250,0.16));
-      --tag-bg: rgba(255,255,255,0.04);
-      --shadow: 0 18px 45px rgba(0,0,0,0.22);
-      --toggle-icon: "☀️";
-    }
-
-    /* ── Light theme ── */
-    [data-theme="light"] {
-      --bg: #f1f5f9;
-      --bg-grad: radial-gradient(circle at top, #e2eaf5 0%, #f1f5f9 45%);
+    :root {
+      --bg: #eff3f8;
       --panel: #ffffff;
-      --card: #ffffff;
-      --nav-bg-top: rgba(241,245,249,0.95);
-      --nav-bg-bot: rgba(241,245,249,0.75);
-      --text: #0f172a;
-      --muted: #475569;
-      --accent: #0284c7;
-      --accent2: #7c3aed;
-      --border: rgba(0,0,0,0.1);
-      --card-bg: rgba(255,255,255,0.9);
-      --btn-grad: linear-gradient(135deg, rgba(2,132,199,0.12), rgba(124,58,237,0.10));
-      --tag-bg: rgba(0,0,0,0.04);
-      --shadow: 0 18px 45px rgba(0,0,0,0.08);
-      --toggle-icon: "🌙";
+      --text: #111827;
+      --muted: #4b5563;
+      --accent: #2563eb;
+      --border: rgba(17, 24, 39, 0.12);
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+      --max: 1280px;
     }
 
     * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Inter, Arial, Helvetica, sans-serif;
-      background: var(--bg-grad);
-      background-attachment: fixed;
+      background: linear-gradient(180deg, #f3f7fb 0%, #edf2f7 100%);
       color: var(--text);
       line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
     }
 
-    a { color: var(--accent); text-decoration: none; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
     a:hover { text-decoration: underline; }
 
-    .wrap { max-width: 1040px; margin: 0 auto; padding: 24px; }
-
-    /* ── Nav ── */
-    .nav {
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 16px; padding: 10px 0 22px;
-      position: sticky; top: 0; backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, var(--nav-bg-top), var(--nav-bg-bot));
-      z-index: 10;
-      transition: background 0.3s;
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 34px 40px;
     }
-    .brand { font-weight: 700; letter-spacing: 0.2px; }
-    .navlinks { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.95rem; align-items: center; }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 10px 0 24px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.2px;
+    }
+
+    .navlinks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.96rem;
+    }
+
     .navlinks a { color: var(--muted); }
 
-    /* ── Theme toggle button ── */
-    .theme-toggle {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: var(--tag-bg);
-      cursor: pointer;
-      font-size: 1.1rem;
-      line-height: 1;
-      transition: background 0.2s, border-color 0.2s, transform 0.15s;
-      flex-shrink: 0;
-    }
-    .theme-toggle:hover { transform: scale(1.12); }
-    /* icon swaps via CSS */
-    [data-theme="dark"]  .theme-toggle::after { content: "☀️"; }
-    [data-theme="light"] .theme-toggle::after { content: "🌙"; }
-
-    /* ── Hero ── */
     .hero {
       display: grid;
-      grid-template-columns: 1.4fr 0.9fr;
-      gap: 24px;
-      padding: 34px 0 20px;
-      align-items: start;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 34px;
+      align-items: stretch;
+      padding-top: 12px;
     }
-    .hero h1 { margin: 0 0 10px; font-size: clamp(2.3rem, 5vw, 4.6rem); line-height: 1.02; }
+
+    .hero-left {
+      padding: 10px 0 0;
+    }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(3rem, 6vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
     .subtitle {
-      font-size: clamp(1.05rem, 2vw, 1.3rem);
-      color: var(--muted);
-      margin: 0 0 18px;
+      margin: 0 0 22px;
+      font-size: clamp(1.2rem, 2.4vw, 2rem);
+      color: #526072;
+      max-width: 12ch;
     }
-    .tagrow { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 24px; }
+
+    .intro {
+      margin: 0 0 26px;
+      font-size: 1.12rem;
+      color: #516074;
+      max-width: 900px;
+    }
+
+    .tagrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 0 0 34px;
+    }
+
     .tag {
-      display: inline-flex; align-items: center;
-      padding: 8px 12px; border: 1px solid var(--border);
-      border-radius: 999px; background: var(--tag-bg);
-      color: var(--text); font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 20px;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: #0f172a;
+      font-size: 1rem;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
     }
 
-    /* ── Cards & sections ── */
-    .hero-card, .section, .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 4px;
     }
-    .hero-card { padding: 22px; }
-    .hero-card h2 { margin-top: 0; }
-    .contact-list { display: grid; gap: 10px; }
-    .contact-list div { color: var(--muted); }
-    .contact-list strong { color: var(--text); }
 
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
     .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 11px 16px; border-radius: 12px;
-      border: 1px solid var(--border);
-      background: var(--btn-grad);
-      color: var(--text);
-      font-weight: 600;
-      transition: background 0.3s, border-color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border-radius: 16px;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      background: linear-gradient(180deg, #dfeaf9 0%, #d8dff7 100%);
+      color: #0f172a;
+      font-weight: 700;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.08);
+      min-width: 150px;
     }
 
-    .section { padding: 22px; margin: 18px 0; }
-    .section h2 { margin: 0 0 14px; font-size: 1.4rem; }
-    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
-    .card { padding: 16px; }
-    .card h3 { margin: 0 0 8px; font-size: 1.05rem; }
-    .meta { color: var(--accent); font-size: 0.92rem; margin-bottom: 8px; }
-    ul.clean { margin: 0; padding-left: 18px; color: var(--muted); }
-    ul.clean li { margin: 7px 0; }
+    .btn:hover {
+      text-decoration: none;
+      filter: brightness(0.99);
+    }
 
-    .pub li, .proj li, .svc li, .ach li { margin: 10px 0; }
-    .small { color: var(--muted); font-size: 0.96rem; }
+    .hero-right {
+      background: #ffffff;
+      border: 1px solid rgba(17, 24, 39, 0.08);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 520px;
+    }
+
+    .portrait {
+      width: 100%;
+      max-width: 480px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      background: #e5e7eb;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    }
+
+    .section {
+      margin-top: 34px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+      padding: 24px;
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-size: 1.45rem;
+      letter-spacing: -0.02em;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid rgba(17, 24, 39, 0.08);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .meta {
+      color: var(--accent);
+      font-size: 0.94rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .small { color: var(--muted); }
+
+    ul.clean {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    ul.clean li { margin: 8px 0; }
 
     footer {
-      padding: 28px 0 40px;
+      padding: 30px 0 8px;
       color: var(--muted);
       text-align: center;
       font-size: 0.95rem;
     }
 
-    @media (max-width: 860px) {
-      .hero, .grid-2 { grid-template-columns: 1fr; }
-      .nav { position: static; }
+    @media (max-width: 980px) {
+      .hero,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right {
+        min-height: 380px;
+      }
+
+      .subtitle {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 18px;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section {
+        padding: 18px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.6rem, 16vw, 4rem);
+      }
+
+      .btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -179,16 +276,16 @@
         <a href="#publications">Publications</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle light/dark mode"></button>
       </nav>
     </header>
 
     <main>
       <section class="hero">
-        <div>
+        <div class="hero-left">
           <h1>Summit Haque</h1>
           <p class="subtitle">Ph.D. Student in Computer Science at Oregon State University</p>
-          <p class="small">
+
+          <p class="intro">
             I study Human-Computer Interaction, CS Education, Software Engineering, and Artificial Intelligence.
             My work focuses on educational technology, generative AI in learning, and assessing software engineering contributions.
           </p>
@@ -206,14 +303,8 @@
           </div>
         </div>
 
-        <aside class="hero-card">
-          <h2>Contact</h2>
-          <div class="contact-list">
-            <div><strong>Email:</strong> haquesu@oregonstate.edu</div>
-            <div><strong>Phone:</strong> (541) 250-7625</div>
-            <div><strong>Location:</strong> Corvallis, Oregon</div>
-            <div><strong>LinkedIn:</strong> linkedin.com/in/summit-haque/</div>
-          </div>
+        <aside class="hero-right">
+          <img src="summit-haque.jpg" alt="Portrait of Summit Haque" class="portrait" />
         </aside>
       </section>
 
@@ -302,17 +393,17 @@
 
       <section id="publications" class="section">
         <h2>Publications</h2>
-        <ul class="clean pub">
-          <li>S. Haque and C. Hundhausen, "Generative AI Access, Usage, and Perceptions: An Empirical Comparison of Computing Students In The United States and Bangladesh," ICER 2025.</li>
-          <li>M. I. H. Shihab, C. Hundhausen, A. Tariq, S. Haque, Y. Qiao, B. W. Mulanda, "The Effects of GitHub Copilot on Computing Students' Programming Effectiveness, Efficiency, and Processes in Brownfield Coding Tasks," ICER 2025.</li>
-          <li>M. Z. Haque et al., "B-NER: A Novel Bangla Named Entity Recognition Dataset with Largest Entities and Its Baseline Evaluation," IEEE Access, 2023.</li>
-          <li>N. Humaira, H. Afia, and S. Haque, "A Study on Machine Learning and Deep Learning Methods Using Feature Extraction for Bengali News Document Classification," ASIANCON, 2021.</li>
+        <ul class="clean">
+          <li>S. Haque and C. Hundhausen, “Generative AI Access, Usage, and Perceptions: An Empirical Comparison of Computing Students In The United States and Bangladesh,” ICER 2025.</li>
+          <li>M. I. H. Shihab, C. Hundhausen, A. Tariq, S. Haque, Y. Qiao, B. W. Mulanda, “The Effects of GitHub Copilot on Computing Students’ Programming Effectiveness, Efficiency, and Processes in Brownfield Coding Tasks,” ICER 2025.</li>
+          <li>M. Z. Haque et al., “B-NER: A Novel Bangla Named Entity Recognition Dataset with Largest Entities and Its Baseline Evaluation,” IEEE Access, 2023.</li>
+          <li>N. Humaira, H. Afia, and S. Haque, “A Study on Machine Learning and Deep Learning Methods Using Feature Extraction for Bengali News Document Classification,” ASIANCON, 2021.</li>
         </ul>
       </section>
 
       <section id="projects" class="section">
         <h2>Projects</h2>
-        <ul class="clean proj">
+        <ul class="clean">
           <li><strong>SpeedScore Feature Development:</strong> Implemented new features in a web application within a five-member sprint team using GitHub and Jira.</li>
           <li><strong>GenAI Across Borders:</strong> Comparative survey study on GenAI access, usage, and concerns among computing students in Bangladesh and the United States.</li>
           <li><strong>HANDSHAKE: An Assessment of Usability:</strong> Interview-based case study identifying usability issues in Handshake and proposing UI prototypes.</li>
@@ -325,7 +416,7 @@
         <div class="grid-2">
           <div class="card">
             <h3>Professional Service</h3>
-            <ul class="clean svc">
+            <ul class="clean">
               <li>Guest Lecturer, Sylhet Engineering College.</li>
               <li>Guest Trainer, Sylhet Polytechnic Institute.</li>
               <li>Guest Trainer, Bangladesh Computer Council.</li>
@@ -335,7 +426,7 @@
           </div>
           <div class="card">
             <h3>Voluntary Service</h3>
-            <ul class="clean svc">
+            <ul class="clean">
               <li>Vice President, Bangladesh Student Association at Oregon State University.</li>
               <li>Vice President, CSE Society, Shahjalal University of Science and Technology.</li>
             </ul>
@@ -348,7 +439,7 @@
         <div class="grid-2">
           <div class="card">
             <h3>Achievements</h3>
-            <ul class="clean ach">
+            <ul class="clean">
               <li>Prime Minister Gold Medal 2017, awarded by University Grant Commission Bangladesh.</li>
               <li>Scholarship, awarded by University Grant Commission Bangladesh.</li>
               <li>Scholarship, awarded by Shahjalal University of Science and Technology.</li>
@@ -357,7 +448,7 @@
           </div>
           <div class="card">
             <h3>Skills</h3>
-            <ul class="clean ach">
+            <ul class="clean">
               <li>Programming: Python, C, Java, HTML, SQL.</li>
               <li>Machine Learning: Supervised and unsupervised learning.</li>
               <li>Software Engineering: Agile development, project management, usability engineering.</li>
@@ -384,20 +475,6 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    const html = document.documentElement;
-    const btn  = document.getElementById('themeToggle');
-
-    // Load saved preference, or fall back to OS preference
-    const saved = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    html.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
-
-    btn.addEventListener('click', () => {
-      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    });
   </script>
 </body>
 </html>
