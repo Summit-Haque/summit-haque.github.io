@@ -7,17 +7,27 @@
   <meta name="description" content="Summit Haque — Ph.D. student in Computer Science at Oregon State University. Research in HCI, CS education, software engineering, and AI." />
   <link rel="stylesheet" href="styles.css" />
 </head>
+<script>
+  const links = document.querySelectorAll('.nav-link');
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      links.forEach(item => item.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+</script>
 <body>
   <div class="wrap">
     <header class="nav">
       <nav class="navlinks">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
-        <a href="#publications">Publications</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#research">Research</a>
+        <a class="nav-link" href="#education">Education</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#publications">Publications</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#contact">Contact</a>
       </nav>
     </header>
 
