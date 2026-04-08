@@ -35,22 +35,17 @@ a:hover { text-decoration: underline; }
 
 .nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 18px;
   padding: 10px 0 24px;
-}
-
-.brand {
-  font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: 0.2px;
 }
 
 .navlinks {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 14px;
+  width: 100%;
   font-size: 0.96rem;
 }
 
