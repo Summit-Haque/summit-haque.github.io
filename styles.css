@@ -429,7 +429,7 @@ main {
   display: inline-flex;
   gap: 4px;
   padding: 4px;
-  margin-bottom: 28px;
+  margin-bottom: 12px;
   border: 1px solid var(--rule);
   border-radius: 8px;
 }
@@ -451,6 +451,23 @@ main {
   color: var(--ink);
 }
 .filter .count { color: var(--faint); font-weight: 400; font-variant-numeric: tabular-nums; margin-left: 2px; }
+
+.pubs-note {
+  color: var(--faint);
+  font-size: 0.85rem;
+  margin-bottom: 28px;
+}
+.pubs-note a { color: inherit; }
+
+.cites {
+  margin-left: 6px;
+  color: var(--accent);
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
 
 .pubs {
   list-style: none;
