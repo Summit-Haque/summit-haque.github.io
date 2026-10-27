@@ -27,6 +27,6 @@ Live site: https://summit-haque.github.io/
 
 **Update the CV PDF.** Compile your LaTeX CV and replace `assets/Summit_Haque_CV.pdf`, keeping the same file name.
 
-**Add Google Scholar or ORCID.** In the hero section, find the commented-out lines under "Add your profile URLs", fill in your links, and remove the comment markers.
+**Add ORCID.** In the hero section, find the commented-out line under "Add your ORCID URL", fill in your link, and remove the comment markers.
 
 **Change the photo.** Replace the four `assets/portrait-*` files with a 4:5 crop at 480 and 960 pixels wide. Keep each file well under 200 KB.
